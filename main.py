@@ -39,11 +39,8 @@ def check_password_strength(password):
     # Calculate score based on character types
     score += sum(character_types)
 
-    # Print password details
     print(f"Password length is {length}, adding {score} points!")
     print(f"Password contains {sum(character_types)} different character types.")
-
-    # Calculate entropy (optional)
 
     # Print password strength score
     if score < 4:
