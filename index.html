@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Checker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Password Strength Checker</h1>
+    </header>
+
+    <main>
+        <section id="passwordSection">
+            <h2>Check Your Password Strength</h2>
+            <form id="passwordForm">
+                <label for="password">Enter your password:</label><br>
+                <input type="password" id="password" name="password"><br>
+                <button type="button" onclick="checkStrength()">Check Strength</button>
+            </form>
+            <div id="strengthResult"></div>
+        </section>
+
+        <section id="tipsSection">
+            <h2>Tips for Creating a Strong Password</h2>
+            <ul>
+                <li>Include a mix of uppercase and lowercase letters.</li>
+                <li>Add numbers and special characters.</li>
+                <li>Avoid using common words or phrases.</li>
+                <li>Make it at least 8 characters long.</li>
+                <li>Consider using a passphrase instead of a single word.</li>
+            </ul>
+        </section>
+
+        <section id="infoSection">
+            <h2>Why Password Strength Matters</h2>
+            <p>Having a strong password is essential for protecting your accounts and personal information online. 
+              <br>Weak passwords are vulnerable to hacking and unauthorized access. By using a strong, unique password for each of your accounts, 
+              <br>you can greatly reduce the risk of security breaches and identity theft.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Password Strength Checker</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
