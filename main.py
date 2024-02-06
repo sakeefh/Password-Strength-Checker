@@ -13,21 +13,17 @@ def check_password_strength(password):
     lowercase_regex = re.compile(r'[a-z]')
     digit_regex = re.compile(r'[0-9]')
     special_regex = re.compile(r'[{}]'.format(re.escape(string.punctuation)))
-
-    # Check for character types
+    
     character_types = [bool(uppercase_regex.search(password)),
                        bool(lowercase_regex.search(password)),
                        bool(digit_regex.search(password)),
                        bool(special_regex.search(password))]
 
-    # Calculate password length
     length = len(password)
 
-    # Load common passwords
     with open('passwords.txt', 'r', encoding='utf-8') as f:
         common_passwords = f.read().splitlines()
 
-    # Check if password is in common list
     if password in common_passwords:
         print("Your password was found in the common list. Score 0 / 7")
         return
@@ -45,14 +41,10 @@ def check_password_strength(password):
 
     # Calculate score based on character types
     score += sum(character_types)
-
-    # Print password details
     print(f"Password length is {length}, adding {score} points!")
     print(f"Password contains {sum(character_types)} different character types.")
 
-    # Calculate entropy (optional)
-
-    # Print password strength score
+    # Password strength score
     if score < 4:
         print(f"Your Password Score: {score} / 7")
     elif score == 4:
@@ -63,13 +55,12 @@ def check_password_strength(password):
         print(f"Your Password Score: {score} / 7")
 
 def train_model():
-    # Load password data
     with open('passwords.txt', 'r', encoding='utf-8') as f:
         passwords = f.read().splitlines()
     X = np.array([list(map(len, passwords))]).T
     y = np.array([int(p in common_passwords) for p in passwords])
 
-    # Train a RandomForestClassifier
+    # RandomForestClassifier
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     clf = RandomForestClassifier()
     clf.fit(X_train, y_train)
@@ -89,11 +80,9 @@ def index():
 def check_strength():
     password = request.form['password']
     hashed_password = hash_password(password)
-    # Call password strength checker function here
     return jsonify({'strength': 'strong'})
 
 if __name__ == "__main__":
-    # Initialize common passwords
     with open('passwords.txt', 'r', encoding='utf-8') as f:
         common_passwords = set(f.read().splitlines())
 
